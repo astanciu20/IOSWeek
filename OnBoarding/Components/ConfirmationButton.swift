@@ -19,7 +19,6 @@ struct ConfirmationButton: View {
             .fill(Color(red: 0.4, green: 0.85, blue: 0.85)))
         .foregroundColor(.black)
         .padding(.horizontal, 15)
-        .padding(.vertical, 10)
         .opacity(isConfirmationEnabled ? 1.0 : 0.3)
         .disabled(!isConfirmationEnabled)
     }
