@@ -136,7 +136,7 @@ struct AboutYouView: View {
 
 struct AboutYouView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
+        NavigationStack {
             AboutYouView {}
         }
     }

@@ -6,5 +6,5 @@ enum NavigationScreen: Hashable {
     case tellUsAboutYourselfOccupation
     case tellUsAboutYourselfIncome
     case tellUsAboutYourselfDomain
-//    case congrats
+    case congrats
 }

@@ -9,6 +9,8 @@ struct TellUsAboutYourselfViewOccupation: View {
         "Investor",
         "Self-employed"]
     @State private var selectedOccupation: String?
+    let goToTellAboutYourselfIncomes: () -> Void
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 10) {
@@ -45,8 +47,10 @@ struct TellUsAboutYourselfViewOccupation: View {
             }
         }
         .navigationTitle("Tell Us About Yourself")
-        .navigationDestination(for: NavigationScreen.self) { _ in
-            TellUsAboutYourselfViewIncome()
+        .onChange(of: selectedOccupation) { newValue in
+            if newValue != nil {
+                goToTellAboutYourselfIncomes()
+            }
         }
     }
 }
@@ -54,7 +58,7 @@ struct TellUsAboutYourselfViewOccupation: View {
 struct TellUsAboutYourselfViewOccupation_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            TellUsAboutYourselfViewOccupation()
+            TellUsAboutYourselfViewOccupation {}
         }
     }
 }

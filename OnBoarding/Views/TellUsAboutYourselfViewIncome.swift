@@ -8,47 +8,48 @@ struct TellUsAboutYourselfViewIncome: View {
         "7,501 - 11,250 Lei",
         "> 11,250 Lei"]
     
-    @State private var navigationScreen = [NavigationScreen]()
     @State private var selectedOccupation: String?
+    let goToTellAboutYourselfDomain: () -> Void
+    
     var body: some View {
         GeometryReader { geometry in
-            NavigationStack(path: $navigationScreen) {
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("What is your monthly net income?")
-                        .font(.title3)
-                        .padding(.horizontal, 15)
-                        .padding(.top, 30)
-                    List(selection: $selectedOccupation) {
-                        ForEach(incomes, id:\.self) { income in
-                            HStack {
-                                Text(income)
+            VStack(alignment: .leading, spacing: 10) {
+                Text("What is your monthly net income?")
+                    .font(.title3)
+                    .padding(.horizontal, 15)
+                    .padding(.top, 30)
+                List(selection: $selectedOccupation) {
+                    ForEach(incomes, id:\.self) { income in
+                        HStack {
+                            Text(income)
+                                .padding(.horizontal, 15)
+                            Spacer()
+                            if selectedOccupation == income {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(Color(red: 0.4, green: 0.85, blue: 0.85))
                                     .padding(.horizontal, 15)
-                                Spacer()
-                                if selectedOccupation == income {
-                                    Image(systemName: "checkmark")
-                                        .foregroundColor(Color(red: 0.4, green: 0.85, blue: 0.85))
-                                        .padding(.horizontal, 15)
-                                }
-                                
                             }
                             
                         }
-                        .frame(width: geometry.size.width, alignment: .leading)
+                        
                     }
-                    .listStyle(GroupedListStyle())
-                    .scrollContentBackground(.hidden)
-                    .scrollDisabled(true)
-                    .ignoresSafeArea()
-                    Spacer()
-                    SettingsNotification()
-                        .padding(.horizontal, 15)
-                        .padding(.bottom, 15)
+                    .frame(width: geometry.size.width, alignment: .leading)
                 }
+                .listStyle(GroupedListStyle())
+                .scrollContentBackground(.hidden)
+                .scrollDisabled(true)
+                .ignoresSafeArea()
+                Spacer()
+                SettingsNotification()
+                    .padding(.horizontal, 15)
+                    .padding(.bottom, 15)
             }
         }
         .navigationTitle("Tell Us About Yourself")
-        .navigationDestination(for: NavigationScreen.self) { _ in
-            TellUsAboutYourselfViewIncome()
+        .onChange(of: selectedOccupation) { newValue in
+            if newValue != nil {
+                goToTellAboutYourselfDomain()
+            }
         }
     }
 }
@@ -56,7 +57,7 @@ struct TellUsAboutYourselfViewIncome: View {
 struct TellUsAboutYourselfViewIncome_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            TellUsAboutYourselfViewIncome()
+            TellUsAboutYourselfViewIncome {}
         }
     }
 }
