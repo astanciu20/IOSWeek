@@ -16,12 +16,12 @@ struct IdentificationConsentsView: View {
                 Toggle(isOn: $isNextOn) {
                     EmptyView()
                 }
-                    .tint(Color.cyan)
+                    .tint(Color(red: 0.4, green: 0.85, blue: 0.85))
             }
             HStack {
                 Spacer()
                 Text("Read more")
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color(red: 0.4, green: 0.85, blue: 0.85))
             }
             Spacer()
             ConfirmationButton(text: "I consent", isConfirmationEnabled: isNextOn) {

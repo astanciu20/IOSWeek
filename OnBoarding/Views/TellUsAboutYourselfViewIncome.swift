@@ -26,7 +26,7 @@ struct TellUsAboutYourselfViewIncome: View {
                                 Spacer()
                                 if selectedOccupation == income {
                                     Image(systemName: "checkmark")
-                                        .foregroundColor(.blue)
+                                        .foregroundColor(Color(red: 0.4, green: 0.85, blue: 0.85))
                                         .padding(.horizontal, 15)
                                 }
                                 

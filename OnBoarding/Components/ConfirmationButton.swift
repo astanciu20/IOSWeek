@@ -16,7 +16,7 @@ struct ConfirmationButton: View {
                 .padding(10)
         }
         .background(RoundedRectangle(cornerRadius: 20)
-            .fill(Color.cyan))
+            .fill(Color(red: 0.4, green: 0.85, blue: 0.85)))
         .foregroundColor(.black)
         .padding(.horizontal, 15)
         .padding(.vertical, 10)
