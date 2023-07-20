@@ -12,7 +12,7 @@ struct AboutYouView: View {
     let goToIdentificationConsent: () -> Void
     
     private var isNextEnabled: Bool {
-        return (isMrSelected || isMsSelected) && !firstName.isEmpty && !lastName.isEmpty
+        return (isMrSelected || isMsSelected) && !firstName.isEmpty && !lastName.isEmpty && isEighteenYearsOld(birthdate: date)
     }
     
     private let dateFormat: DateFormatter = {
@@ -123,6 +123,14 @@ struct AboutYouView: View {
         }
         .background(Color.gray.opacity(showGrayBackground ? 0.1 : 0))
         .ignoresSafeArea()
+    }
+    
+    private func isEighteenYearsOld(birthdate: Date) -> Bool {
+        let calendar = Calendar.current
+        if let eighteenYearsAgo = calendar.date(byAdding: .year, value: -18, to: Date()) {
+            return calendar.compare(birthdate, to: eighteenYearsAgo, toGranularity: .day) == .orderedAscending
+        }
+        return false
     }
 }
 
