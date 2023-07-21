@@ -39,6 +39,7 @@ struct Congrats: View {
             }
         }
         .padding(.init(top: 90, leading: 15, bottom: 15, trailing: 15))
+        .navigationBarBackButtonHidden()
     }
 }
 
