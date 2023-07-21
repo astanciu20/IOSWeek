@@ -31,7 +31,7 @@ struct TellUsAboutYourselfViewDomain: View {
                                     .foregroundColor(.gray)
                                     .padding(8)
                                     .background(RoundedRectangle(cornerRadius: 5)
-                                        .fill(.clear))
+                                        .fill(selectedOccupation == domain ? Color(red: 0.4, green: 0.85, blue: 0.85).opacity(0.2) : Color.clear))
                                     .overlay(RoundedRectangle(cornerRadius: 5)
                                         .stroke(.gray, lineWidth: 2))
                             }
