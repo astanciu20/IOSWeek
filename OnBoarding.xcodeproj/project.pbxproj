@@ -22,6 +22,7 @@
 		ACA326E92A693DD400B4EBA2 /* LanguageSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA326E82A693DD400B4EBA2 /* LanguageSelection.swift */; };
 		ACA326EB2A69481A00B4EBA2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA326EA2A69481A00B4EBA2 /* Router.swift */; };
 		ACA326ED2A696E3200B4EBA2 /* Congrats.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA326EC2A696E3200B4EBA2 /* Congrats.swift */; };
+		ACA326EF2A6A600100B4EBA2 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA326EE2A6A600100B4EBA2 /* LaunchScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		ACA326E82A693DD400B4EBA2 /* LanguageSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelection.swift; sourceTree = "<group>"; };
 		ACA326EA2A69481A00B4EBA2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		ACA326EC2A696E3200B4EBA2 /* Congrats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Congrats.swift; sourceTree = "<group>"; };
+		ACA326EE2A6A600100B4EBA2 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 			children = (
 				ACA326D92A67C71700B4EBA2 /* ConfirmationButton.swift */,
 				ACA326DB2A67C72600B4EBA2 /* SettingsNotification.swift */,
+				ACA326EE2A6A600100B4EBA2 /* LaunchScreen.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				ACA326EB2A69481A00B4EBA2 /* Router.swift in Sources */,
 				ACA326D52A67C6F300B4EBA2 /* AboutYouView.swift in Sources */,
 				ACA326E02A690FDF00B4EBA2 /* TellUsAboutYourselfViewIncome.swift in Sources */,
+				ACA326EF2A6A600100B4EBA2 /* LaunchScreen.swift in Sources */,
 				ACA326E92A693DD400B4EBA2 /* LanguageSelection.swift in Sources */,
 				ACA326E22A690FE800B4EBA2 /* TellUsAboutYourselfViewDomain.swift in Sources */,
 				ACA326AB2A67BEDE00B4EBA2 /* GetStartedView.swift in Sources */,
