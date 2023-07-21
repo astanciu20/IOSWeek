@@ -1,8 +1,8 @@
 import SwiftUI
 
 struct GetStartedView: View {
-    @State private var isLaunchScreenEnabled = true
     @State private var selection = Language.english
+    @State var profile: Profile
     let goToAboutYouView: () -> Void
     
     var body: some View {
@@ -24,14 +24,7 @@ struct GetStartedView: View {
                 Spacer()
             }
             .padding(.init(top: 30, leading: 15, bottom: 15, trailing: 15))
-            .navigationTitle(isLaunchScreenEnabled ? "" : "Get Started")
-            
-            if isLaunchScreenEnabled {
-                LaunchScreen(imageName: "launch_screen")
-                    .onAppear {
-                        startTimer()
-                    }
-            }
+            .navigationTitle("Get Started")
         }
     }
     
@@ -47,18 +40,13 @@ struct GetStartedView: View {
             .frame(width: 150)
         }
     }
-    
-    private func startTimer() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            isLaunchScreenEnabled = false
-        }
-    }
 }
 
 struct GetStartedView_Previews: PreviewProvider {
     static var previews: some View {
+        let profile = Profile.emptyProfile
         NavigationStack {
-            GetStartedView {}
+            GetStartedView (profile: profile, goToAboutYouView: {})
         }
     }
 }

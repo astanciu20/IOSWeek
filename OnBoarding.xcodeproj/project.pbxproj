@@ -23,6 +23,9 @@
 		ACA326EB2A69481A00B4EBA2 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA326EA2A69481A00B4EBA2 /* Router.swift */; };
 		ACA326ED2A696E3200B4EBA2 /* Congrats.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA326EC2A696E3200B4EBA2 /* Congrats.swift */; };
 		ACA326EF2A6A600100B4EBA2 /* LaunchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA326EE2A6A600100B4EBA2 /* LaunchScreen.swift */; };
+		ACA3272F2A6A9BA800B4EBA2 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA3272E2A6A9BA800B4EBA2 /* Profile.swift */; };
+		ACA327312A6AA1C200B4EBA2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA327302A6AA1C200B4EBA2 /* ProfileView.swift */; };
+		ACA327332A6AADE100B4EBA2 /* AboutYouViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACA327322A6AADE100B4EBA2 /* AboutYouViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		ACA326EA2A69481A00B4EBA2 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		ACA326EC2A696E3200B4EBA2 /* Congrats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Congrats.swift; sourceTree = "<group>"; };
 		ACA326EE2A6A600100B4EBA2 /* LaunchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchScreen.swift; sourceTree = "<group>"; };
+		ACA3272E2A6A9BA800B4EBA2 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		ACA327302A6AA1C200B4EBA2 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		ACA327322A6AADE100B4EBA2 /* AboutYouViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutYouViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +107,7 @@
 				ACA326E62A693D6500B4EBA2 /* Views */,
 				ACA326AC2A67BEDF00B4EBA2 /* Assets.xcassets */,
 				ACA326AE2A67BEDF00B4EBA2 /* Preview Content */,
+				ACA327322A6AADE100B4EBA2 /* AboutYouViewModel.swift */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -127,6 +134,7 @@
 				ACA326D92A67C71700B4EBA2 /* ConfirmationButton.swift */,
 				ACA326DB2A67C72600B4EBA2 /* SettingsNotification.swift */,
 				ACA326EE2A6A600100B4EBA2 /* LaunchScreen.swift */,
+				ACA3272E2A6A9BA800B4EBA2 /* Profile.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -148,6 +156,7 @@
 				ACA326D62A67C70300B4EBA2 /* TellUsAboutYourselfViewOccupation.swift */,
 				ACA326DF2A690FDF00B4EBA2 /* TellUsAboutYourselfViewIncome.swift */,
 				ACA326E12A690FE800B4EBA2 /* TellUsAboutYourselfViewDomain.swift */,
+				ACA327302A6AA1C200B4EBA2 /* ProfileView.swift */,
 				ACA326EC2A696E3200B4EBA2 /* Congrats.swift */,
 			);
 			path = Views;
@@ -265,7 +274,9 @@
 				ACA326EB2A69481A00B4EBA2 /* Router.swift in Sources */,
 				ACA326D52A67C6F300B4EBA2 /* AboutYouView.swift in Sources */,
 				ACA326E02A690FDF00B4EBA2 /* TellUsAboutYourselfViewIncome.swift in Sources */,
+				ACA3272F2A6A9BA800B4EBA2 /* Profile.swift in Sources */,
 				ACA326EF2A6A600100B4EBA2 /* LaunchScreen.swift in Sources */,
+				ACA327332A6AADE100B4EBA2 /* AboutYouViewModel.swift in Sources */,
 				ACA326E92A693DD400B4EBA2 /* LanguageSelection.swift in Sources */,
 				ACA326E22A690FE800B4EBA2 /* TellUsAboutYourselfViewDomain.swift in Sources */,
 				ACA326AB2A67BEDE00B4EBA2 /* GetStartedView.swift in Sources */,
@@ -275,6 +286,7 @@
 				ACA326DA2A67C71700B4EBA2 /* ConfirmationButton.swift in Sources */,
 				ACA326DC2A67C72600B4EBA2 /* SettingsNotification.swift in Sources */,
 				ACA326A92A67BEDE00B4EBA2 /* OnBoardingApp.swift in Sources */,
+				ACA327312A6AA1C200B4EBA2 /* ProfileView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

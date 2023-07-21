@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TellUsAboutYourselfViewOccupation: View {
+    @Binding var profile: Profile
     let occupations = [
         "Employee",
         "Pensioner",
@@ -11,6 +12,7 @@ struct TellUsAboutYourselfViewOccupation: View {
     @State private var selectedOccupation: String?
     let goToTellAboutYourselfIncomes: () -> Void
     
+    
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 10) {
@@ -19,7 +21,7 @@ struct TellUsAboutYourselfViewOccupation: View {
                     .padding(.horizontal, 15)
                     .padding(.top, 30)
                 List(selection: $selectedOccupation) {
-                    ForEach(occupations, id:\.self) { occupation in
+                    ForEach(occupations, id: \.self) { occupation in
                         HStack {
                             Text(occupation)
                                 .padding(.horizontal, 15)
@@ -49,6 +51,7 @@ struct TellUsAboutYourselfViewOccupation: View {
         .navigationTitle("Tell Us About Yourself")
         .onChange(of: selectedOccupation) { newValue in
             if newValue != nil {
+                profile.occupation = selectedOccupation!
                 goToTellAboutYourselfIncomes()
             }
         }
@@ -56,9 +59,11 @@ struct TellUsAboutYourselfViewOccupation: View {
 }
 
 struct TellUsAboutYourselfViewOccupation_Previews: PreviewProvider {
+    @State static var profile = Profile.emptyProfile
+    
     static var previews: some View {
         NavigationStack {
-            TellUsAboutYourselfViewOccupation {}
+            TellUsAboutYourselfViewOccupation(profile: $profile, goToTellAboutYourselfIncomes: {})
         }
     }
 }

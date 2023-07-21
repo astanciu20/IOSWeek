@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TellUsAboutYourselfViewIncome: View {
+    @Binding var profile: Profile
     let incomes = [
         "< 2,500 Lei",
         "2,501 - 5,000 Lei",
@@ -10,6 +11,7 @@ struct TellUsAboutYourselfViewIncome: View {
     
     @State private var selectedOccupation: String?
     let goToTellAboutYourselfDomain: () -> Void
+    
     
     var body: some View {
         GeometryReader { geometry in
@@ -48,6 +50,7 @@ struct TellUsAboutYourselfViewIncome: View {
         .navigationTitle("Tell Us About Yourself")
         .onChange(of: selectedOccupation) { newValue in
             if newValue != nil {
+                profile.income = selectedOccupation!
                 goToTellAboutYourselfDomain()
             }
         }
@@ -55,9 +58,11 @@ struct TellUsAboutYourselfViewIncome: View {
 }
 
 struct TellUsAboutYourselfViewIncome_Previews: PreviewProvider {
+    @State static var profile = Profile.emptyProfile
+    
     static var previews: some View {
         NavigationStack {
-            TellUsAboutYourselfViewIncome {}
+            TellUsAboutYourselfViewIncome(profile: $profile, goToTellAboutYourselfDomain: {})
         }
     }
 }

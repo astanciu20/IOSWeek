@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct TellUsAboutYourselfViewDomain: View {
+    @Binding var profile: Profile
     let domains = [
         ["Arts, culture, sports", "Commerce"],
         ["Construction, real estate", "Education"],
@@ -13,8 +14,8 @@ struct TellUsAboutYourselfViewDomain: View {
     ]
     
     @State private var selectedOccupation: String?
-    let goToCongrats: () -> Void
-    
+    let goToProfile: () -> Void
+   
     var body: some View {
         GeometryReader { geometry in
             VStack(alignment: .leading, spacing: 30) {
@@ -26,6 +27,8 @@ struct TellUsAboutYourselfViewDomain: View {
                         ForEach(rowDomains, id: \.self) { domain in
                             Button(action: {
                                 selectedOccupation = domain
+                                profile.domain = domain
+                                goToProfile()
                             }) {
                                 Text(domain)
                                     .foregroundColor(.gray)
@@ -46,18 +49,15 @@ struct TellUsAboutYourselfViewDomain: View {
         }
         .navigationTitle("Tell Us About Yourself")
         .padding(.init(top: 30, leading: 15, bottom: 15, trailing: 15))
-        .onChange(of: selectedOccupation) { newValue in
-            if newValue != nil {
-                goToCongrats()
-            }
-        }
     }
 }
 
 struct TellUsAboutYourselfViewDomain_Previews: PreviewProvider {
+    @State static var profile = Profile.emptyProfile
+    
     static var previews: some View {
         NavigationStack {
-            TellUsAboutYourselfViewDomain {}
+            TellUsAboutYourselfViewDomain(profile: $profile, goToProfile: {})
         }
     }
 }

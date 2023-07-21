@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LaunchScreen: View {
-    var imageName: String
+    let imageName: String
 
     var body: some View {
         Image(imageName)

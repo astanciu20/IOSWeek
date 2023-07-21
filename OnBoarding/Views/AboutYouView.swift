@@ -1,19 +1,8 @@
 import SwiftUI
 
 struct AboutYouView: View {
-    @State private var isMrSelected = false
-    @State private var isMsSelected = false
-    @State private var firstName = ""
-    @State private var lastName = ""
-    @State private var date = Date.now
-    @State private var datePickerOn = false
-    @State private var showGrayBackground = false
-    
     let goToIdentificationConsent: () -> Void
-    
-    private var isNextEnabled: Bool {
-        return (isMrSelected || isMsSelected) && !firstName.isEmpty && !lastName.isEmpty && isEighteenYearsOld(birthdate: date)
-    }
+    @ObservedObject var viewModel: AboutYouViewModel
     
     private let dateFormat: DateFormatter = {
         let formatter = DateFormatter()
@@ -27,17 +16,17 @@ struct AboutYouView: View {
                 .font(.title3)
             genderSelection
             VStack {
-                TextField("First name", text: $firstName)
+                TextField("First name", text: $viewModel.profile.firstName)
                 Divider()
             }
             VStack {
-                TextField("Last name", text: $lastName)
+                TextField("Last name", text: $viewModel.profile.lastName)
                 Divider()
             }
             datePicker
             Spacer()
             
-            ConfirmationButton(text: "Next", isConfirmationEnabled: isNextEnabled) {
+            ConfirmationButton(text: "Next", isConfirmationEnabled: viewModel.isNextEnabled) {
                 goToIdentificationConsent()
             }
         }
@@ -49,17 +38,14 @@ struct AboutYouView: View {
     @ViewBuilder private var genderSelection: some View {
         HStack {
             Button {
-                isMrSelected.toggle()
-                if isMsSelected == true {
-                    isMrSelected = false
-                }
+                viewModel.toggleMr()
             } label: {
                 Toggle("Mr", isOn: Binding(
-                    get: { isMrSelected },
+                    get: { viewModel.isMrSelected },
                     set: { newValue in
                         if newValue {
-                            isMrSelected = true
-                            isMsSelected = false
+                            viewModel.isMrSelected = true
+                            viewModel.isMsSelected = false
                         }
                     }
                 ))
@@ -72,17 +58,14 @@ struct AboutYouView: View {
             }
             
             Button {
-                isMsSelected.toggle()
-                if isMrSelected == true {
-                    isMsSelected = false
-                }
+                viewModel.toggleMs()
             } label: {
                 Toggle("Ms", isOn: Binding(
-                    get: { isMsSelected },
+                    get: { viewModel.isMsSelected },
                     set: { newValue in
                         if newValue {
-                            isMsSelected = true
-                            isMrSelected = false
+                            viewModel.isMsSelected = true
+                            viewModel.isMrSelected = false
                         }
                     }
                 ))
@@ -104,40 +87,34 @@ struct AboutYouView: View {
                 Text("Date of birth")
                 Spacer()
                 Button {
-                    datePickerOn.toggle()
+                    viewModel.datePickerOn.toggle()
                 } label: {
-                    Text(date, formatter: dateFormat)
+                    Text(viewModel.profile.dateOfBirth, formatter: dateFormat)
                 }
                 .foregroundColor(.gray)
             }
-            if datePickerOn {
-                DatePicker("", selection: $date, displayedComponents: [.date])
+            if viewModel.datePickerOn {
+                DatePicker("", selection: $viewModel.profile.dateOfBirth, displayedComponents: [.date])
                     .datePickerStyle(.wheel)
                     .padding(.trailing)
                     .onAppear {
-                        showGrayBackground = true
+                        viewModel.showGrayBackground = true
                     }
                     .onDisappear {
-                        showGrayBackground = false                        }
+                        viewModel.showGrayBackground = false                        }
             }
         }
-        .background(Color.gray.opacity(showGrayBackground ? 0.1 : 0))
+        .background(Color.gray.opacity(viewModel.showGrayBackground ? 0.1 : 0))
         .ignoresSafeArea()
-    }
-    
-    private func isEighteenYearsOld(birthdate: Date) -> Bool {
-        let calendar = Calendar.current
-        if let eighteenYearsAgo = calendar.date(byAdding: .year, value: -18, to: Date()) {
-            return calendar.compare(birthdate, to: eighteenYearsAgo, toGranularity: .day) == .orderedAscending
-        }
-        return false
     }
 }
 
 struct AboutYouView_Previews: PreviewProvider {
+    @State static var profile = Profile.emptyProfile
+    
     static var previews: some View {
         NavigationStack {
-            AboutYouView {}
+            AboutYouView(goToIdentificationConsent: {}, viewModel: AboutYouViewModel(profile: profile))
         }
     }
 }
